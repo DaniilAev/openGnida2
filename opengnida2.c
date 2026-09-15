@@ -2,28 +2,39 @@
 #include <stdlib.h>
 #include <string.h>
 
-char bad_usage_err[] = "Bad usage: use the \"opengnida2 --confirm [false\\true]\"";
-char cancelled[] = "Cancelled.";
+const char common_bad_usage_err[] = "Bad usage: try the \"opengnida2 --help\0";
+const char confirm_bad_usage_err[] = "Bad usage: use the \"opengnida2 --confirm [false\\true]\"\0";
+const char cancelled[] = "Cancelled.";
+const char started[] = "Started...";
+const char help[] = "Soon";
 int main(int argc, char** argv){
     if(argc < 2){
-        fprintf(stderr, "%s", bad_usage_err);
+        fprintf(stderr, "%s", common_bad_usage_err);
         exit(1);
     }
-    if (strcmp(argv[1], "--confirm")){
-        fprintf(stderr, "%s", bad_usage_err);
-        exit(1);        
-    }
-    else{
-        if (!strcmp(argv[2], "false")){
+    else if (!strcmp(argv[1], "--confirm")){
+        if (argc < 3){
+            fprintf(stderr, "%s", confirm_bad_usage_err);
+            exit(1);
+        }
+        else if (!strcmp(argv[2], "false")){
             fprintf(stdout, "%s", cancelled);
             exit(0);
         }
-        if (!strcmp(argv[2], "true")){
-            goto start;
+        else if (!strcmp(argv[2], "true")){
+            fprintf(stdout, "%s", started);
+            exit(0);
         }
-        fprintf(stderr, "%s", bad_usage_err);
+        fprintf(stderr, "%s", confirm_bad_usage_err);
         exit(1);
     }
-    start:
+    else if (!strcmp(argv[1], "--help")){
+        fprintf(stdout, "%s", help);
+        exit(0);
+    }
+    else{
+        fprintf(stderr, "%s", common_bad_usage_err);
+        exit(1);
+    }
     return 0;
 }
