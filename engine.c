@@ -8,7 +8,7 @@ int engine(){
     int result_of_test;
     int files_counter = 0;
     int result_of_writing = 0;
-    long size_of_file = 32768; //TEMP
+    long size_of_file = 32 * 1024 * 1024;
     char *space;
     FILE* file;
 
