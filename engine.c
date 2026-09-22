@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "engine.h"
 
-char filename[128] = "\0";
 int engine(){
     char filename[128] = "\0";
     int result_of_test;
@@ -25,7 +24,9 @@ int engine(){
             sprintf(filename, "%d", files_counter++);
             file = fopen(filename, "w");
             fwrite(space, sizeof(char), size_of_file, file);
-            result_of_writing = fflush(file);
+            fflush(file);
+            result_of_writing = ferror(file);
+            clearerr(file);
             fclose(file);
             if (result_of_writing != 0){
                 size_of_file >>= 1;

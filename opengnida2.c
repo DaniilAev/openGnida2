@@ -14,7 +14,7 @@ const char cancelled[] = "Cancelled.\n\0";
 const char started[] = "Started...\n\0";
 const char help[] = "Soon\n\0";
 const char version[] = "OpenGnida 2\nVersion alpha 0.1\n\0";
-const char done[] = "Done.";
+const char done[] = "Done.\n\0";
 
 int main(int argc, char** argv){
     int result;
