@@ -55,6 +55,6 @@ int test(){
     }
 
     /*Successfuly*/
-    fprintf(stdout, "%S", test_compl);
+    fprintf(stdout, "%s", test_compl);
     return 0;    
 }

@@ -19,7 +19,7 @@ const char alloc_err[] = "Unable to allocate the memory\n\0";
 /*Inform messages*/
 const char cancelled[] = "Cancelled.\n\0";
 const char started[] = "Started...\n\0";
-const char help[] = "Help: --help\nVersion: --version\nStart: --confirm [true/false]\nTry to find other information on github.com/daniilaev/openGnida2\0";
+const char help[] = "Help: --help\nVersion: --version\nStart: --confirm [true/false]\nTry to find other information on github.com/daniilaev/openGnida2\n\0";
 const char version[] = "OpenGnida 2\nVersion 1.0\nSourse: github.com/daniilaev/openGnida2\n\0";
 const char done[] = "Done.\n\0";
 
@@ -49,35 +49,35 @@ int main(int argc, char** argv){
                 exit(0);
                 break;
             case 1:
-                sprintf(stderr, "%s", dir_cre_folder_err);
+                fprintf(stderr, "%s", dir_cre_folder_err);
                 exit(1);
                 break;
             case 2:
-                sprintf(stderr, "%s", file_op_err);
+                fprintf(stderr, "%s", file_op_err);
                 exit(1);
                 break;
             case 3:
-                sprintf(stderr, "%s", dir_cre_folder_err);
+                fprintf(stderr, "%s", dir_cre_folder_err);
                 exit(1);
                 break; 
             case 4:
-                sprintf(stderr, "%s", close_err);
+                fprintf(stderr, "%s", close_err);
                 exit(1);
                 break;
             case 5:
-                sprintf(stderr, "%s", remove_err);        
+                fprintf(stderr, "%s", remove_err);        
                 exit(1);
                 break;               
             case 6:
-                sprintf(stderr, "%s", fol_rem_err);
+                fprintf(stderr, "%s", fol_rem_err);
                 exit(1);
                 break;
             case 7:
-                sprintf(stderr, "%s", alloc_err);
+                fprintf(stderr, "%s", alloc_err);
                 exit(1);
                 break;
             default:
-                printf("%s", undefined_err);
+                fprintf("%s", undefined_err);
                 exit(result);
                 break;
             }
