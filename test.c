@@ -4,6 +4,7 @@ int test(){
     FILE* file;
     int result_of_operation;
     char* test = "Testing...\n";
+    char* test_compl = "Test complete\n";
     char* space;
 
     fprintf(stdout, "%s", test);
@@ -54,5 +55,6 @@ int test(){
     }
 
     /*Successfuly*/
+    fprintf(stdout, "%S", test_compl);
     return 0;    
 }
