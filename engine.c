@@ -7,6 +7,7 @@ int engine(){
     int result_of_test;
     int files_counter = 0;
     int result_of_writing = 0;
+    int i = 0;
     long size_of_file = 32 * 1024 * 1024;
     char *space;
     FILE* file;
@@ -23,7 +24,7 @@ int engine(){
     while (size_of_file > 0)
     {     
             abort(); // Delete for testing. TEST ONLY ON VIRTUAL MACHINE!
-            sprintf(filename, "OG_working_directory\\%d", files_counter++);
+            sprintf(filename, "OG_working_directory/%d", files_counter++);
             file = fopen(filename, "w");
             fwrite(space, sizeof(char), size_of_file, file);
             fflush(file);
@@ -37,5 +38,16 @@ int engine(){
 
     free(space);
 
-   return 0;
+    for (;i < 128; ++i){
+        filename[i] = (char)0;
+    }
+
+    for (i = 0; i < files_counter; ++i){
+        sprintf(filename, "OG_working_directory/%d" , i);
+        remove(filename);
+    }
+
+    system("rmdir OG_working_directory");
+    
+    return 0;
 }
