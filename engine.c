@@ -10,7 +10,6 @@ int engine(int rnd){
     long size_of_file = 32 * 1024 * 1024;
     char *space;
     FILE* file;
-
     result_of_test = test();
     if (result_of_test != 0){
         return result_of_test;
@@ -27,6 +26,9 @@ int engine(int rnd){
             abort(); // Delete for testing. TEST ONLY ON VIRTUAL MACHINE!
             sprintf(filename, "OG_working_directory/%d", files_counter++);
             file = fopen(filename, "w");
+            if (rnd){
+                space_rnd(space);
+            }
             fwrite(space, sizeof(char), size_of_file, file);
             fflush(file);
             result_of_writing = ferror(file);
