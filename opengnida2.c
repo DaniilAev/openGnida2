@@ -77,7 +77,7 @@ int main(int argc, char** argv){
                 exit(1);
                 break;
             default:
-                fprintf("%s", undefined_err);
+                fprintf(stderr, "%s", undefined_err);
                 exit(result);
                 break;
             }
