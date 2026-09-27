@@ -17,6 +17,8 @@ int engine(){
         return result_of_test;
     }
 
+    printf("Engine started...\n");
+
     system("mkdir OG_working_directory");
 
     space = (char*)malloc(size_of_file);
