@@ -41,7 +41,7 @@ int main(int argc, char** argv){
         }
         else if (!strcmp(argv[2], "true")){
             fprintf(stdout, "%s", started);
-            result = engine();
+            result = engine(0);
             switch (result)
             {
             case 0:

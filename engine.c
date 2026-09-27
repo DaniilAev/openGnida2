@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "engine.h"
-
-int engine(){
+int engine(int rnd){
     char filename[128] = "\0";
     int result_of_test;
     int files_counter = 0;
