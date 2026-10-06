@@ -6,7 +6,7 @@
 
 /*ERRORS*/
 const char common_bad_usage_err[] = "Bad usage: try the \"opengnida2 --help\"\n\0";
-const char confirm_bad_usage_err[] = "Bad usage: use the \"opengnida2 --confirm [false\\true]\"\n\0";
+const char confirm_bad_usage_err[] = "Bad usage: use the \"opengnida2 --confirm [false\\true] (--soft)\"\n\0";
 const char undefined_err[] = "Undefined error.\n\0";
 const char dir_cre_folder_err[] = "Unable to create a folder\n\0";
 const char file_op_err[] = "Unable to open a file\n\0";
@@ -19,19 +19,19 @@ const char alloc_err[] = "Unable to allocate the memory\n\0";
 /*Inform messages*/
 const char cancelled[] = "Cancelled.\n\0";
 const char started[] = "Started...\n\0";
-const char help[] = "Help: --help\nVersion: --version\nStart: --confirm [true/false]\nTry to find other information on github.com/daniilaev/openGnida2\n\0";
+const char help[] = "Help: --help\nVersion: --version\nStart: --confirm [true/false] (--soft)\n\tAdd --soft at the end for safe file filling\nTry to find other information on github.com/daniilaev/openGnida2\n\0";
 const char version[] = "OpenGnida 2\nVersion 1.0\nSourse: https://github.com/daniilaev/opengnida2\n\0";
 const char done[] = "Done.\n\0";
 
 int main(int argc, char** argv){
     int result;
-
+    int safe;
     if(argc < 2){
         fprintf(stderr, "%s", common_bad_usage_err);
         exit(1);
     }
     else if (!strcmp(argv[1], "--confirm")){
-        if (argc < 3){
+        if (!(argc == 3 || argc == 4)){
             fprintf(stderr, "%s", confirm_bad_usage_err);
             exit(1);
         }
@@ -40,6 +40,18 @@ int main(int argc, char** argv){
             exit(0);
         }
         else if (!strcmp(argv[2], "true")){
+            if (argc == 4){
+                if (!strcmp(argv[3], "--soft")){
+                    safe = 1;
+                }
+                else{
+                    fprintf(stderr, "%s", confirm_bad_usage_err);
+                    exit(1);
+                }
+            }
+            else{
+                safe = 0;
+            }
             fprintf(stdout, "%s", started);
             result = engine(1);
             switch (result)
