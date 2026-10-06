@@ -20,7 +20,7 @@ const char alloc_err[] = "Unable to allocate the memory\n\0";
 const char cancelled[] = "Cancelled.\n\0";
 const char started[] = "Started...\n\0";
 const char help[] = "Help: --help\nVersion: --version\nStart: --confirm [true/false]\nTry to find other information on github.com/daniilaev/openGnida2\n\0";
-const char version[] = "OpenGnida 2\nVersion 1.0\nSourse: github.com/daniilaev/openGnida2\n\0";
+const char version[] = "OpenGnida 2\nVersion 1.0\nSourse: https://github.com/daniilaev/opengnida2\n\0";
 const char done[] = "Done.\n\0";
 
 int main(int argc, char** argv){

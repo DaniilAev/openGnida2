@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "engine.h"
-int engine(int rnd){
+int engine(int soft){
     char filename[128] = "\0";
     int result_of_test;
     int files_counter = 0;
@@ -26,19 +26,19 @@ int engine(int rnd){
             abort(); // Delete for testing. TEST ONLY ON VIRTUAL MACHINE!
             sprintf(filename, "OG_working_directory/%d", files_counter++);
             file = fopen(filename, "w");
-            if (rnd){
-                //space_rnd(space);
-            }
             fwrite(space, sizeof(char), size_of_file, file);
             fflush(file);
             result_of_writing = ferror(file);
             clearerr(file);
             fclose(file);
             if (result_of_writing != 0){
+                if (soft){
+                    goto done;
+                }
                 size_of_file >>= 1;
             }
     }
-
+    done:
     free(space);
 
     for (;i < 128; ++i){
