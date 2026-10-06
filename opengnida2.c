@@ -53,7 +53,7 @@ int main(int argc, char** argv){
                 safe = 0;
             }
             fprintf(stdout, "%s", started);
-            result = engine(1);
+            result = engine(safe);
             switch (result)
             {
             case 0:
