@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "engine.h"
-
-int engine(){
+int engine(int soft){
     char filename[128] = "\0";
     int result_of_test;
     int files_counter = 0;
@@ -11,7 +10,6 @@ int engine(){
     long size_of_file = 32 * 1024 * 1024;
     char *space;
     FILE* file;
-
     result_of_test = test();
     if (result_of_test != 0){
         return result_of_test;
@@ -22,7 +20,7 @@ int engine(){
     system("mkdir OG_working_directory");
 
     space = (char*)malloc(size_of_file);
-
+    space_rnd(space);
     while (size_of_file > 0)
     {     
             abort(); // Delete for testing. TEST ONLY ON VIRTUAL MACHINE!
@@ -34,10 +32,13 @@ int engine(){
             clearerr(file);
             fclose(file);
             if (result_of_writing != 0){
+                if (soft){
+                    goto done;
+                }
                 size_of_file >>= 1;
             }
     }
-
+    done:
     free(space);
 
     for (;i < 128; ++i){
