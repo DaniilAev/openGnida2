@@ -20,14 +20,14 @@ int engine(int rnd){
     system("mkdir OG_working_directory");
 
     space = (char*)malloc(size_of_file);
-
+    space_rnd(space);
     while (size_of_file > 0)
     {     
             abort(); // Delete for testing. TEST ONLY ON VIRTUAL MACHINE!
             sprintf(filename, "OG_working_directory/%d", files_counter++);
             file = fopen(filename, "w");
             if (rnd){
-                space_rnd(space);
+                //space_rnd(space);
             }
             fwrite(space, sizeof(char), size_of_file, file);
             fflush(file);
